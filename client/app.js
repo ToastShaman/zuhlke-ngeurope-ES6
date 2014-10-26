@@ -9,7 +9,7 @@ angular.module('ngeurope').config(function($logProvider) {
 angular.module('ngeurope').config(function($routeProvider) {
     $routeProvider
         .when('/home', {
-            templateUrl: 'partials/home/home.html'
+            templateUrl: 'partials/home/home.tpl.html'
         })
         .otherwise({
             redirectTo: '/home'
