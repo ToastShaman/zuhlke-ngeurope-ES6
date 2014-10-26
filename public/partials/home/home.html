@@ -1,3 +1,40 @@
-<div ng-controller="HomeController as home">
-    <h1>{{home.title}}</h1>
+<div ng-controller="HomeController as home" layout="vertical" layout-fill>
+
+    <md-toolbar scroll-shrink class="md-theme-light">
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>My App Title</span>
+            </h3>
+        </div>
+    </md-toolbar>
+
+    <md-content >
+
+        <md-card style="width: 500px;">
+            <img ng-src="{{::home.cardImage}}" class="md-card-image" alt="Washed Out">
+            <h2>Paracosm</h2>
+            <p>
+                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+            </p>
+        </md-card>
+
+        <md-list>
+            <md-item ng-repeat="item in home.todos">
+                <md-item-content>
+                    <div class="md-tile-left">
+                        <img ng-src="{{::item.face}}" alt="{{item.who}}" class="face">
+                    </div>
+                    <div class="md-tile-content">
+                        <h3>{{::item.what}}</h3>
+                        <h4>{{::item.who}}</h4>
+                        <p>
+                            {{::item.notes}}
+                        </p>
+                    </div>
+                </md-item-content>
+                <md-divider inset></md-divider>
+            </md-item>
+        </md-list>
+
+    </md-content>
 </div>

@@ -1,9 +1,17 @@
-angular.module('ngeurope', ['ngRoute']);
+angular.module('ngeurope', ['ngRoute', 'ngMaterial']);
 
-angular.module('ngeurope').config(function ($routeProvider) {
+// @if debug=='true'
+angular.module('ngeurope').config(function($logProvider) {
+    $logProvider.debugEnabled(true);
+});
+// @endif
+
+angular.module('ngeurope').config(function($routeProvider) {
     $routeProvider
-    .when('/home', {
-        templateUrl: 'partials/home/home.html'
-    })
-    .otherwise({ redirectTo: '/home' });
+        .when('/home', {
+            templateUrl: 'partials/home/home.html'
+        })
+        .otherwise({
+            redirectTo: '/home'
+        });
 });

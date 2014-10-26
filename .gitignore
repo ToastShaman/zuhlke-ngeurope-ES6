@@ -31,3 +31,5 @@ bower_components
 node_modules
 public/js
 public/vendor
+public/css
+public/partials
