@@ -1,4 +1,4 @@
-angular.module('ngeurope', ['ngRoute', 'ngMaterial']);
+angular.module('ngeurope', ['ngRoute', 'ngMaterial', 'ngAnimate']);
 
 // @if debug=='true'
 angular.module('ngeurope').config(function($logProvider) {

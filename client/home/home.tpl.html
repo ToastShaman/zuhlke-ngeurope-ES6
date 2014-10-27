@@ -8,33 +8,60 @@
         </div>
     </md-toolbar>
 
-    <md-content >
+    <md-content>
 
-        <md-card style="width: 500px;">
-            <img ng-src="{{::home.cardImage}}" class="md-card-image" alt="Washed Out">
-            <h2>Paracosm</h2>
-            <p>
-                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-            </p>
-        </md-card>
+        <section>
+            <md-subheader class="md-subheader-colored">Todo</md-subheader>
 
-        <md-list>
-            <md-item ng-repeat="item in home.todos">
-                <md-item-content>
-                    <div class="md-tile-left">
-                        <img ng-src="{{::item.face}}" alt="{{item.who}}" class="face">
+            <md-list>
+                <md-item ng-repeat="item in home.todos">
+                    <div ng-if="!item.done">
+                        <md-item-content>
+                            <div class="md-tile-left">
+                                <img ng-src="{{::item.face}}" alt="{{item.who}}" class="face">
+                            </div>
+
+                            <div class="md-tile-content">
+                                <h3>{{::item.what}}</h3>
+                                <h4>{{::item.who}}</h4>
+                                <p>
+                                    {{::item.notes}}
+                                </p>
+                                <md-button class="md-button-colored" ng-click="item.markAsDone()">
+                                    MARK AS DONE
+                                </md-button>
+                            </div>
+                        </md-item-content>
+                        <md-divider inset></md-divider>
                     </div>
-                    <div class="md-tile-content">
-                        <h3>{{::item.what}}</h3>
-                        <h4>{{::item.who}}</h4>
-                        <p>
-                            {{::item.notes}}
-                        </p>
-                    </div>
-                </md-item-content>
-                <md-divider inset></md-divider>
-            </md-item>
-        </md-list>
+                </md-item>
+            </md-list>
+        </section>
 
+        <section>
+            <md-subheader class="md-subheader-colored">Done</md-subheader>
+
+            <md-list>
+                <md-item ng-repeat="item in home.todos">
+                    <div ng-if="item.done">
+                        <md-item-content>
+                            <div class="md-tile-left">
+                                <img ng-src="{{::item.face}}" alt="{{item.who}}" class="face">
+                            </div>
+
+                            <div class="md-tile-content">
+                                <h3>{{::item.what}}</h3>
+                                <h4>{{::item.who}}</h4>
+                                <p>
+                                    {{::item.notes}}
+                                </p>
+                            </div>
+                        </md-item-content>
+                        <md-divider inset></md-divider>
+                    </div>
+                </md-item>
+            </md-list>
+
+        </section>
     </md-content>
 </div>

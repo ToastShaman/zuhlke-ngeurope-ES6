@@ -13,6 +13,17 @@ var less = require('gulp-less');
 var config = require('./config-dev.json');
 
 var sourceTypeConfigs = {
+    bower: {
+        outputDir: './public/vendor'
+    },
+    css: {
+        lessSrc: ['./client/**/*.less'],
+        outputDir: './public/css'
+    },
+    html: {
+        htmlSrc: ['./client/**/*.html'],
+        outputDir: './public/partials'
+    },
     js: {
         transpileSrc: ['./client/app.js', './client/**/!(app).js'],
         htmlSrc: ['./client/**/*.html'],
@@ -26,31 +37,31 @@ var sourceTypeConfigs = {
 // FRONTEND DEPENDENCIES
 
 gulp.task('client/bowerSrc', function() {
-    return bowerSrc().pipe(gulp.dest('./public/vendor'));
+    return bowerSrc().pipe(gulp.dest(sourceTypeConfigs.bower.outputDir));
 });
 
 gulp.task('client/wiredep', ['client/bowerSrc'], function() {
     gulp.src('./public/index.html')
         .pipe(wiredep({
-            directory: './public/vendor'
+            directory: sourceTypeConfigs.bower.outputDir
         }))
         .pipe(gulp.dest('./public'));
 });
 
 gulp.task('client/copyPartials', function() {
-    gulp.src(sourceTypeConfigs.js.htmlSrc, {
+    gulp.src(sourceTypeConfigs.html.htmlSrc, {
         base: './client'
-    }).pipe(gulp.dest('./public/partials'));
+    }).pipe(gulp.dest(sourceTypeConfigs.html.outputDir));
 });
 
 // ------------------
 // BUILD APP
 
 gulp.task('client/less', function() {
-    gulp.src(sourceTypeConfigs.js.lessSrc)
+    gulp.src(sourceTypeConfigs.css.lessSrc)
         .pipe(less())
         .pipe(concat('app.css'))
-        .pipe(gulp.dest('./public/css'));
+        .pipe(gulp.dest(sourceTypeConfigs.css.outputDir));
 });
 
 gulp.task('client/transpile', function() {
