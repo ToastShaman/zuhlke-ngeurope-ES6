@@ -4,7 +4,7 @@ var wiredep = require('wiredep').stream;
 var traceur = require('gulp-traceur');
 var concat = require('gulp-concat');
 var bowerSrc = require('gulp-bower-src');
-var clean = require('gulp-clean');
+var del = require('del');
 var webserver = require('gulp-webserver');
 var watch = require('gulp-watch');
 var preprocess = require('gulp-preprocess');
@@ -97,19 +97,15 @@ gulp.task('start', ['build'], function() {
 // ------------------
 // general targets
 
-gulp.task('clean', function() {
-    return gulp.src(
+gulp.task('clean', function(done) {
+    del(
         [
             './build',
             './public/vendor',
             './public/partials',
             './public/css',
             sourceTypeConfigs.js.outputDir
-        ], {
-            read: false
-        }).pipe(clean({
-        force: true
-    }));
+        ], done);
 });
 
 gulp.task('build', ['clean'], function() {

@@ -1,5 +1,6 @@
 {
     "context": {
-        "debug": "true"
+        "debug": "true",
+        "baseUrl": "http://localhost:8080"
     }
 }
