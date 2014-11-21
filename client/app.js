@@ -1,4 +1,4 @@
-angular.module('ngeurope', ['ngRoute', 'ngMaterial', 'ngAnimate', 'Restangular']);
+angular.module('ngeurope', ['ngRoute', 'ngMaterial', 'ngAnimate', 'ngAria']);
 
 // @if debug=='true'
 angular.module('ngeurope').config(function($logProvider) {
@@ -16,19 +16,4 @@ angular.module('ngeurope').config(function($routeProvider) {
         .otherwise({
             redirectTo: '/home'
         });
-});
-
-angular.module('ngeurope').config(function(RestangularProvider, baseUrl) {
-    RestangularProvider.setBaseUrl(baseUrl);
-    RestangularProvider.setSelfLinkAbsoluteUrl(false);
-    RestangularProvider.setRestangularFields({
-        selfLink: "_links.self.href"
-    });
-    RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
-        // .. to look for getList operations
-        if (operation === "getList") {
-            return data.items;
-        }
-        return data;
-    });
 });

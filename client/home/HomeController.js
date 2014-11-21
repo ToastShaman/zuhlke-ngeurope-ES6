@@ -5,7 +5,7 @@
             this.$http = $http;
             this.url = 'https://baconator-bacon-ipsum.p.mashape.com/?type=all-meat';
             this.headers = {
-                "X-Mashape-Key": "x"
+                "X-Mashape-Key": "EoMboIQlISmsh6nqgDgmY92xFd1jp1zlQdTjsn1bvpGyLDn6Zy"
             };
         }
 
@@ -27,7 +27,6 @@
 
         markAsDone() { this.done_ = true; }
         get isDone() { return this.done_; }
-        get done() { return this.done_; }
     }
 
     class HomeController {
